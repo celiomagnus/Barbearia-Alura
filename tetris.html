@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tetris</title>
+    <style>
+        #tetris {
+            width: 300px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tetris-row {
+            display: flex;
+            height: 20px;
+        }
+        .tetris-cell {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="tetris"></div>
+
+    <script>
+        // Variáveis globais
+        const tetrisElement = document.getElementById('tetris');
+        const tetrisRows = 30;
+        const tetrisCols = 15;
+        const tetrisBoard = [];
+
+        // Cria a matriz do tabuleiro do Tetris
+        function createBoard() {
+            for (let row = 0; row < tetrisRows; row++) {
+                tetrisBoard[row] = [];
+                for (let col = 0; col < tetrisCols; col++) {
+                    tetrisBoard[row][col] = 0;
+                }
+            }
+        }
+
+        // Desenha o tabuleiro do Tetris na tela
+        function drawBoard() {
+            let html = '';
+            for (let row = 0; row < tetrisRows; row++) {
+                html += '<div class="tetris-row">';
+                for (let col = 0; col < tetrisCols; col++) {
+                    const color = tetrisBoard[row][col] === 1 ? 'red' : 'white';
+                    html += '<div class="tetris-cell" style="background-color: ' + color + '"></div>';
+                }
+                html += '</div>';
+            }
+            tetrisElement.innerHTML = html;
+        }
+
+        // Inicializa o jogo
+        function startGame() {
+            createBoard();
+            drawBoard();
+        }
+
+        // Chama a função startGame para iniciar o jogo
+        startGame();
+    </script>
+</body>
+</html>

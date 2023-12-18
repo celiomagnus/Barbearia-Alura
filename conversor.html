@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conversor de moedas brasileiras anteriores</title>
+</head>
+<body>
+	<h1>Conversor de moedas brasileiras anteriores em relação ao real</h1>
+	<form action="#" method="post">
+		<label for="real">Digite o valor em reais:</label>
+		<input type="number" name="real" id="real">
+		<br>
+		<label for="cruzeiro">Cruzeiros:</label>
+		<input type="text" name="cruzeiro" id="cruzeiro" readonly>
+		<br>
+		<label for="cruzado">Cruzados:</label>
+		<input type="text" name="cruzado" id="cruzado" readonly>
+		<br>
+		<label for="cruzado_novo">Cruzados Novos:</label>
+		<input type="text" name="cruzado_novo" id="cruzado_novo" readonly>
+		<br>
+		<label for="cruzeiro_real">Cruzeiros Reais:</label>
+		<input type="text" name="cruzeiro_real" id="cruzeiro_real" readonly>
+		<br>
+		<input type="submit" value="Converter">
+	</form>
+	
+	<script>
+		function converter() {
+			var real = parseFloat(document.getElementById("real").value);
+			var cruzeiro = real / 2750;
+			var cruzado = real / 2750;
+			var cruzado_novo = real / 1000;
+			var cruzeiro_real = real / 2750;
+			
+			document.getElementById("cruzeiro").value = cruzeiro.toFixed(2);
+			document.getElementById("cruzado").value = cruzado.toFixed(2);
+			document.getElementById("cruzado_novo").value = cruzado_novo.toFixed(2);
+			document.getElementById("cruzeiro_real").value = cruzeiro_real.toFixed(2);
+		}
+		
+		document.querySelector("form").addEventListener("submit", function(event) {
+			event.preventDefault();
+			converter();
+		});
+	</script>
+</body>
+</html>
